@@ -23,8 +23,7 @@ export default class Filters extends Component {
             container: {
                 display: 'flex',
                 flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'center'
+                flexDirection: 'row'
             },
             buttons: {
                 padding: '8px 40px',
@@ -79,7 +78,7 @@ export default class Filters extends Component {
     }
     render() {
         return(
-            <div>
+            <div style={this.getStyles().container}>
                 {this.renderButtons()}
                 {this.renderFilteredLogs()}
             </div>

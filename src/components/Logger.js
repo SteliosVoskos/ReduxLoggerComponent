@@ -18,20 +18,16 @@ export default class Logger extends Component {
         const styles = {
             container: {
                 display: 'flex',
-                flex: 1,
-                flexDirection: 'row'
-            },
-            filteredLogs: {
-                paddingLeft: 80
+                flex: 1
             }
         };
         return (
             <div>
-                <div style={styles.container}>
+                <div>
                     <div>
                         {this.renderLogs()}
                     </div>
-                    <div style={styles.filteredLogs}>
+                    <div>
                         <FiltersContainer />
                         {this.renderFilteredLogs()}
                     </div>

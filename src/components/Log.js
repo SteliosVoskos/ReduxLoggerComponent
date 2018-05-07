@@ -20,10 +20,6 @@ export default class Log extends Component {
 
     renderLog() {
         const { logs } = this.props;
-        
-        if (!logs || !logs.length) {
-            return <div style={{padding: '8px 0'}}>No logs to show</div>;
-        }
 
         return logs.map(log => {
             const date = this.formatDateString(log.day, log.month, log.year);
