@@ -1,5 +1,5 @@
 {
-  "name": "redux-boilerplate",
+  "name": "redux-logger-component",
   "version": "1.0.0",
   "scripts": {
     "start": "node server.js",
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SteliosVoskos/redux-boilerplate.git"
+    "url": "https://github.com/SteliosVoskos/ReduxLoggerComponent.git"
   },
   "keywords": [
     "react",
@@ -23,9 +23,9 @@
   "author": "Stelios Voskos <s.voskos@gmail.com> (https://github.com/SteliosVoskos)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SteliosVoskos/redux-boilerplate/issues"
+    "url": "https://github.com/SteliosVoskos/ReduxLoggerComponent/issues"
   },
-  "homepage": "https://github.com/SteliosVoskos/redux-boilerplate",
+  "homepage": "https://github.com/SteliosVoskos/ReduxLoggerComponent",
   "devDependencies": {
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",
