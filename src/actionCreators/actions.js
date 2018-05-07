@@ -23,6 +23,18 @@ export function clearLogs() {
     }
 }
 
+export function clearTimeStampFilteredLogs() {
+    return {
+        type: 'CLEAR_TIME_STAMP_FILTERED_LOGS'
+    }
+}
+
+export function clearFilteredLogsByActionName() {
+    return {
+        type: 'CLEAR_FILTERED_LOGS_BY_ACTION_NAME'
+    }
+}
+
 export function filterLogsByActionName(name) {
     return {
         type: 'FILTER_LOGS_BY_ACTION_NAME',

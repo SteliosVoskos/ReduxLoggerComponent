@@ -11,16 +11,19 @@ export default class Logger extends Component {
         return <Log logs={this.props.persistedLogs} />;
     }
 
+    renderClearButton() {
+        if (!this.props.persistedLogs.length) {
+            return null;
+        }
+
+        return <button onClick={this.handleClearLogClick}>Clear Logs</button>;
+    }
+
     render() {
-        const styles = {
-            container: {
-                display: 'flex',
-                flex: 1
-            }
-        };
         return (
             <div>
                 <div>
+                {this.renderClearButton()}
                     <div>
                         {this.renderLogs()}
                     </div>
@@ -28,7 +31,6 @@ export default class Logger extends Component {
                         <FiltersContainer />
                     </div>
                 </div>
-                {this.props.persistedLogs.length && <button onClick={this.handleClearLogClick}>Clear Logs</button>}
             </div>
         );
     }

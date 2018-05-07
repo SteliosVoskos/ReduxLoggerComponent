@@ -16,6 +16,18 @@ const logWorker = (state=initialState, action) => {
                 logs: [],
                 filteredLogs: []
             }
+        case 'CLEAR_TIME_STAMP_FILTERED_LOGS':
+        localStorage.removeItem('state');
+            return {
+                ...state,
+                logs: []
+            }
+        case 'CLEAR_FILTERED_LOGS_BY_ACTION_NAME':
+        localStorage.removeItem('state');
+            return {
+                ...state,
+                filteredLogs: []
+            }
         case 'UPDATE_LOGS':
             const newDate = new Date();
             return {

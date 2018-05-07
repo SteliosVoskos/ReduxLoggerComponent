@@ -18,6 +18,14 @@ export default class Filters extends Component {
         this.props.filterLogsByActionName(name);
     }
 
+    handleClearTimeStampFilteredActions = () => {
+        this.props.clearTimeStampFilteredLogs();
+    }
+
+    handleClearFilteredActionsByName = () => {
+        this.props.clearFilteredLogsByActionName();
+    }
+
     getStyles() {
         return {
             container: {
@@ -39,6 +47,8 @@ export default class Filters extends Component {
     renderActionFilterButtons() {
         const { filteredActionLogs } = this.props;
 
+        if (!filteredActionLogs.length) return null;
+
         return filteredActionLogs.map(log => {
             return (
                 <button
@@ -52,7 +62,7 @@ export default class Filters extends Component {
         });
     }
 
-    renderFoteredLogsByTimeStamp() {
+    renderFilteredLogsByTimeStamp() {
         return <Log logs={this.props.logs} />
     }
 
@@ -60,7 +70,15 @@ export default class Filters extends Component {
         return <Log logs={this.props.filteredLogs} />
     }
 
-    renderButtons() {
+    renderClearButton(logs, functionName) {
+        if (!logs || !logs.length) {
+            return null;
+        }
+
+        return <button onClick={functionName}>Clear logs</button>;
+    }
+
+    renderButtonsAndFilteredLogs() {
         const { persistedLogs } = this.props;
 
         if (persistedLogs.length) {
@@ -70,11 +88,13 @@ export default class Filters extends Component {
                         <button style={this.getStyles().buttons} onClick={this.handle10MinutesClick}>10 Minutes</button>
                         <button style={this.getStyles().buttons} onClick={this.handle20MinutesClick}>20 Minutes</button>
                         <button style={this.getStyles().buttons} onClick={this.handle30MinutesClick}>30 Minutes</button>
-                        {this.renderFoteredLogsByTimeStamp()}
+                        {this.renderFilteredLogsByTimeStamp()}
+                        {this.renderClearButton(this.props.logs, this.handleClearTimeStampFilteredActions)}
                     </div>
                     <div>
                         {this.renderActionFilterButtons()}
                         {this.renderFilteredLogsByActionName()}
+                        {this.renderClearButton(this.props.filteredActionLogs, this.handleClearFilteredActionsByName)}
                     </div>
                 </div>
             );
@@ -85,7 +105,7 @@ export default class Filters extends Component {
     render() {
         return(
             <div>
-                {this.renderButtons()}
+                {this.renderButtonsAndFilteredLogs()}
             </div>
         );
     }
