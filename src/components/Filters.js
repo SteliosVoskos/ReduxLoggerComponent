@@ -52,7 +52,11 @@ export default class Filters extends Component {
         });
     }
 
-    renderFilteredLogs() {
+    renderFoteredLogsByTimeStamp() {
+        return <Log logs={this.props.logs} />
+    }
+
+    renderFilteredLogsByActionName() {
         return <Log logs={this.props.filteredLogs} />
     }
 
@@ -61,14 +65,16 @@ export default class Filters extends Component {
 
         if (persistedLogs.length) {
             return (
-                <div style={this.getStyles().container}>
+                <div>
                     <div>
                         <button style={this.getStyles().buttons} onClick={this.handle10MinutesClick}>10 Minutes</button>
                         <button style={this.getStyles().buttons} onClick={this.handle20MinutesClick}>20 Minutes</button>
                         <button style={this.getStyles().buttons} onClick={this.handle30MinutesClick}>30 Minutes</button>
+                        {this.renderFoteredLogsByTimeStamp()}
                     </div>
                     <div>
                         {this.renderActionFilterButtons()}
+                        {this.renderFilteredLogsByActionName()}
                     </div>
                 </div>
             );
@@ -78,9 +84,8 @@ export default class Filters extends Component {
     }
     render() {
         return(
-            <div style={this.getStyles().container}>
+            <div>
                 {this.renderButtons()}
-                {this.renderFilteredLogs()}
             </div>
         );
     }

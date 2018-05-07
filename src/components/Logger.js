@@ -11,9 +11,6 @@ export default class Logger extends Component {
         return <Log logs={this.props.persistedLogs} />;
     }
 
-    renderFilteredLogs() {
-        return <Log logs={this.props.logs} />;
-    }
     render() {
         const styles = {
             container: {
@@ -29,7 +26,6 @@ export default class Logger extends Component {
                     </div>
                     <div>
                         <FiltersContainer />
-                        {this.renderFilteredLogs()}
                     </div>
                 </div>
                 {this.props.persistedLogs.length && <button onClick={this.handleClearLogClick}>Clear Logs</button>}
