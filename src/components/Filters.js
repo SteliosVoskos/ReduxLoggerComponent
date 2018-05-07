@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Log from './Log';
 
 export default class Filters extends Component {
     handle10MinutesClick = () => {
@@ -17,14 +18,6 @@ export default class Filters extends Component {
         this.props.filterLogsByActionName(name);
     }
 
-    formatDateString(day, month, year) {
-        return `${day}/${month}/${year}`;
-    }
-
-    formatTimeString(hour, minutes, seconds) {
-        return `${hour}:${minutes}:${seconds}`;
-    }
-
     getStyles() {
         return {
             container: {
@@ -36,6 +29,10 @@ export default class Filters extends Component {
             buttons: {
                 padding: '8px 40px',
                 margin: '8px 8px 8px 0'
+            },
+            log: {
+                fontFamily: 'monospace',
+                fontSize: 16
             }
         };
     }
@@ -57,17 +54,7 @@ export default class Filters extends Component {
     }
 
     renderFilteredLogs() {
-        const { filteredLogs } = this.props;
-        if (!filteredLogs || filteredLogs === null) {
-            return <div style={{padding: '8px 0'}}>No logs to show</div>;
-        }
-
-        return filteredLogs.map((log, index) => {
-            const date = this.formatDateString(log.day, log.month, log.year);
-            const time = this.formatTimeString(log.hour, log.minutes, log.seconds);
-            const logString = `[ On ${date} at ${time} the ${log.actionType} was fired ]`;
-            return <div key={log.id}>{logString}</div>; 
-        });
+        return <Log logs={this.props.filteredLogs} />
     }
 
     renderButtons() {

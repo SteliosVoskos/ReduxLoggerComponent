@@ -1,44 +1,18 @@
 import React, { Component } from 'react';
 import FiltersContainer from '../containers/FiltersContainer';
+import Log from './Log';
 
-export default class Logger extends Component {
-    formatDateString(day, month, year) {
-        return `${day}/${month}/${year}`;
-    }
-
-    formatTimeString(hour, minutes, seconds) {
-        return `${hour}:${minutes}:${seconds}`;
-    }
-    
+export default class Logger extends Component {    
     handleClearLogClick = () => {
         this.props.clearLogs();
     }
     
     renderLogs() {
-        const { persistedLogs } = this.props;
-        if (!persistedLogs || persistedLogs === null) {
-            return null;
-        }
-        return persistedLogs.map((log, index) => {
-            const date = this.formatDateString(log.day, log.month, log.year);
-            const time = this.formatTimeString(log.hour, log.minutes, log.seconds);
-            const logString = `[On ${date} at ${time} the ${log.actionType} was fired]`;
-            return <div key={index}>{logString}</div>; 
-        });
+        return <Log logs={this.props.persistedLogs} />;
     }
 
     renderFilteredLogs() {
-        const { logs } = this.props;
-        if (!logs || logs === null) {
-            return <div style={{padding: '8px 0'}}>No logs to show</div>;
-        }
-
-        return logs.map((log, index) => {
-            const date = this.formatDateString(log.day, log.month, log.year);
-            const time = this.formatTimeString(log.hour, log.minutes, log.seconds);
-            const logString = `[On ${date} at ${time} the ${log.actionType} was fired]`;
-            return <div key={index}>{logString}</div>; 
-        });
+        return <Log logs={this.props.logs} />;
     }
     render() {
         const styles = {

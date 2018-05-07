@@ -13,7 +13,8 @@ const logWorker = (state=initialState, action) => {
             return {
                 ...state,
                 persistedLogs: [],
-                logs: []
+                logs: [],
+                filteredLogs: []
             }
         case 'UPDATE_LOGS':
             const newDate = new Date();
