@@ -22,3 +22,10 @@ export function clearLogs() {
         type: 'CLEAR_LOGS'
     }
 }
+
+export function filterLogsByActionName(name) {
+    return {
+        type: 'FILTER_LOGS_BY_ACTION_NAME',
+        name
+    };
+}

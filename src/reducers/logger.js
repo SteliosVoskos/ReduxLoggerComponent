@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 const initialState = {
+    filteredLogs: [],
     persistedLogs: [],
     logs: [],
     header: ''
@@ -19,6 +20,11 @@ const logWorker = (state=initialState, action) => {
             return {
                 ...state,
                 logs: state.persistedLogs.filter(log => (newDate.getMinutes() - log.minutes) <= action.minutes)
+            }
+        case 'FILTER_LOGS_BY_ACTION_NAME':
+            return {
+                ...state,
+                filteredLogs: state.persistedLogs.filter(log => log.actionType === action.name)
             }
     }
     return {
