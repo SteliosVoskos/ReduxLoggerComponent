@@ -20,21 +20,23 @@ export default class Chart extends Component {
         }
     }
 
-    componentWillMount() {
-        this.setState({
-            chartData: {
-                labels: this.props.labels,
-                datasets: [{
-                    label:'Occerences',
-                    data: this.props.data
-                }]
-            }
-        })
+    componentWillReceiveProps(nextProps) {
+        if (this.props.data !== nextProps.data) {
+            this.setState({
+                chartData: {
+                    labels: this.props.labels,
+                    datasets: [{
+                        label:'Occerences',
+                        data: this.props.data
+                    }]
+                }
+            })
+        }
     }
 
     render() {
         return (
-            <div className="chart">
+            <div>
                 <Bar
                     data={this.state.chartData}
                     options={
