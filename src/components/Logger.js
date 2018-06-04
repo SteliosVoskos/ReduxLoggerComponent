@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import FiltersContainer from '../containers/FiltersContainer';
 import Log from './Log';
+import Table from './Table';
 
 export default class Logger extends Component {    
     handleClearLogClick = () => {
         this.props.clearLogs();
+    }
+
+    getStyles() {
+        return {
+            logsContainer: {
+                display: 'flex',
+                flexDirection: 'row'
+            }
+        };
     }
     
     renderLogs() {
@@ -24,8 +34,11 @@ export default class Logger extends Component {
             <div>
                 <div>
                 {this.renderClearButton()}
-                    <div>
+                    <div style={this.getStyles().logsContainer}>
                         {this.renderLogs()}
+                        {this.props.persistedLogs.length && <Table
+                            tableOfActionOccurences={this.props.tableOfActionOccurences}
+                        />}
                     </div>
                     <div>
                         <FiltersContainer />
