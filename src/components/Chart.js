@@ -26,7 +26,7 @@ export default class Chart extends Component {
                 chartData: {
                     labels: this.props.labels,
                     datasets: [{
-                        label:'Occerences',
+                        label: this.props.label,
                         data: this.props.data
                     }]
                 }
@@ -44,7 +44,7 @@ export default class Chart extends Component {
                             maintainAspectRatio: false,
                             title: {
                                 display: this.props.displayTitle,
-                                text: 'Occurence of each action',
+                                text: this.props.title,
                                 fontSize: 25
                             }
                         }

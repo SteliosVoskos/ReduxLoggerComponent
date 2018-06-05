@@ -6,7 +6,6 @@ import { logCounter } from '../services/logCounter';
 
 function mapStateToProps(state) {
     const { logs, persistedLogs } = state.logger.logWorker;
-    console.log(persistedLogs);
     const arrayOfActionTypes = [];
     const actionTypeString = persistedLogs.length && persistedLogs.map(log => log.actionType);
     const actionTypeArray = arrayOfActionTypes.concat(actionTypeString);

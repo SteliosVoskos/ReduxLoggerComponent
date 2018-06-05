@@ -7,6 +7,7 @@ function uniq(array, param){
       return givenArray.map(function(mapItem){ return mapItem[param]; }).indexOf(item[param]) === pos;
     });
 }
+
 function mapStateToProps(state) {
     const { filteredLogs, logs, persistedLogs } = state.logger.logWorker;
     return {

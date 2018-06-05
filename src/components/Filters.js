@@ -28,10 +28,9 @@ export default class Filters extends Component {
 
     getStyles() {
         return {
-            container: {
-                display: 'flex',
-                flex: 1,
-                flexDirection: 'row'
+            timeStampLogsContainer: {
+                maxHeight: 236,
+                overflowY: 'scroll'
             },
             buttons: {
                 padding: '8px 40px',
@@ -75,7 +74,7 @@ export default class Filters extends Component {
             return null;
         }
 
-        return <button onClick={functionName}>Clear logs</button>;
+        return <button onClick={functionName} style={this.getStyles().buttons}>Clear logs</button>;
     }
 
     renderButtonsAndFilteredLogs() {
@@ -84,12 +83,12 @@ export default class Filters extends Component {
         if (persistedLogs.length) {
             return (
                 <div>
-                    <div>
-                        <button style={this.getStyles().buttons} onClick={this.handle10MinutesClick}>10 Minutes</button>
-                        <button style={this.getStyles().buttons} onClick={this.handle20MinutesClick}>20 Minutes</button>
-                        <button style={this.getStyles().buttons} onClick={this.handle30MinutesClick}>30 Minutes</button>
+                    <button style={this.getStyles().buttons} onClick={this.handle10MinutesClick}>10 Minutes</button>
+                    <button style={this.getStyles().buttons} onClick={this.handle20MinutesClick}>20 Minutes</button>
+                    <button style={this.getStyles().buttons} onClick={this.handle30MinutesClick}>30 Minutes</button>
+                    {this.renderClearButton(this.props.logs, this.handleClearTimeStampFilteredActions)}
+                    <div style={this.getStyles().timeStampLogsContainer}>
                         {this.renderFilteredLogsByTimeStamp()}
-                        {this.renderClearButton(this.props.logs, this.handleClearTimeStampFilteredActions)}
                     </div>
                     <div>
                         {this.renderActionFilterButtons()}

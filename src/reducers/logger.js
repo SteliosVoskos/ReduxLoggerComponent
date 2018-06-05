@@ -2,8 +2,7 @@ import { combineReducers } from 'redux';
 const initialState = {
     filteredLogs: [],
     persistedLogs: [],
-    logs: [],
-    header: ''
+    logs: []
 };
 
 const logWorker = (state=initialState, action) => {

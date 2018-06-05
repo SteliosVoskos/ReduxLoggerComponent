@@ -12,8 +12,10 @@ export default class Table extends Component {
         return (
             <div>
                 <Chart
-                    labels={this.createArrayFromKeysOrValues(tableOfActionOccurences, 'keys')}
                     data={this.createArrayFromKeysOrValues(tableOfActionOccurences, 'values')}
+                    label="Occurences"
+                    labels={this.createArrayFromKeysOrValues(tableOfActionOccurences, 'keys')}
+                    title="Occurence of each action"
                 />
             </div>
         );

@@ -10,9 +10,17 @@ export default class Logger extends Component {
 
     getStyles() {
         return {
+            logs: {
+                maxHeight: 235,
+                overflowY: 'scroll'
+            },
             logsContainer: {
                 display: 'flex',
                 flexDirection: 'row'
+            },
+            buttons: {
+                padding: '8px 40px',
+                margin: '8px 8px 8px 0'
             }
         };
     }
@@ -26,7 +34,7 @@ export default class Logger extends Component {
             return null;
         }
 
-        return <button onClick={this.handleClearLogClick}>Clear Logs</button>;
+        return <button onClick={this.handleClearLogClick} style={this.getStyles().buttons}>Clear Logs</button>;
     }
 
     render() {
@@ -35,13 +43,15 @@ export default class Logger extends Component {
                 <div>
                 {this.renderClearButton()}
                     <div style={this.getStyles().logsContainer}>
-                        {this.renderLogs()}
-                        {this.props.persistedLogs.length && <Table
-                            tableOfActionOccurences={this.props.tableOfActionOccurences}
-                        />}
+                        <div style={this.getStyles().logs}>
+                            {this.renderLogs()}
+                        </div>
+                        <FiltersContainer />
                     </div>
                     <div>
-                        <FiltersContainer />
+                    {this.props.persistedLogs.length && <Table
+                            tableOfActionOccurences={this.props.tableOfActionOccurences}
+                        />}
                     </div>
                 </div>
             </div>
